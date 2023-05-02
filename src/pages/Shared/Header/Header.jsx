@@ -119,23 +119,33 @@ const Header = () => {
                   <ul className="space-y-4">
                     <li>
                       <Link
-                        to="/shop"
-                        aria-label="Shop"
-                        title="Shop"
+                        to="/blog"
+                        aria-label="Blog"
+                        title="Blog"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
-                        Shop
+                        Blog
                       </Link>
                     </li>
                     
                     <li>
                       <Link
-                        to="/about"
-                        aria-label="About Us"
-                        title="About Us"
+                        to="/login"
+                        aria-label="Login"
+                        title="Login"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
-                        About Us
+                        Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/register"
+                        aria-label="Register"
+                        title="Register"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                      >
+                        Register
                       </Link>
                     </li>
                   </ul>
