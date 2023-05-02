@@ -14,16 +14,18 @@ const ChefCard = ({chef}) => {
     <h2 className="card-title">
      {chefName}
     </h2>
-    <div className='flex justify-between'>
-    <p>Experience: {yearsOfExperience}</p>
+    <div className='font-semibold'>
+    <p className='mt-2'>Experience: {yearsOfExperience}</p>
     <p>Recipes: {numberOfRecipes}</p>
     </div>
-    <div className=' flex justify-start'>
-        <p><FaThumbsUp></FaThumbsUp></p>
-        <p>{likes}</p>
+    <div className='  '>
+        <div className=' '>
+        <p  className='text-2xl flex items-center gap-3 text-slate-500 '><FaThumbsUp></FaThumbsUp><span className='text-base text-black font-semibold'>{likes}</span></p>
+        
+        </div>
         
     </div>
-    <div className="card-actions justify-end mt-5">
+    <div className=" card-actions justify-end mt-5">
     <Link to={`/chefDatils/${id}`}><button className="btn bg-slate-500">View Recipes</button></Link>
     </div>
   </div>

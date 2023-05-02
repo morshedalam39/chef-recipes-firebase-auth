@@ -12,7 +12,7 @@ const Chef = () => {
           .then((result) => result.json())
           .then((data) => setChefData(data));
       }, []);
-      console.log(chefData);
+    //   console.log(chefData);
     return (
         <div className='grid md:grid-cols-3 gap-6 mt-5'>
             {
