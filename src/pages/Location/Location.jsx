@@ -3,7 +3,7 @@ import React from 'react';
 const Location = () => {
     return (
         <div className='mt-5'>
-            <section className="py-6 sm:py-12 bg-slate-400 rounded">
+            <section className="py-6 sm:py-12 bg-slate-300 rounded">
 	<div className="container p-6 mx-auto space-y-8">
 		<div className="space-y-2 text-center">
 			<h2 className="text-3xl font-bold">Our Top Review Foods</h2>

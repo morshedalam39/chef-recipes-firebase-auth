@@ -5,7 +5,7 @@ const Discount = () => {
         <div className='mt-8'>
 
 
-           <div className="p-6 py-12 bg-slate-400 rounded">
+           <div className="p-6 py-12 bg-slate-300 rounded">
 	<div className="container mx-auto">
 		<div className="flex flex-col lg:flex-row items-center justify-between">
 			<h2 className="text-center text-6xl tracking-tighter font-bold">Up to
@@ -15,7 +15,7 @@ const Discount = () => {
 				<span>Plus free shipping! Use code:</span>
 				<span className="font-bold text-lg">MAMBA</span>
 			</div>
-			<button className="btn bg-slate-800">shop now</button>
+			<button className="btn bg-slate-600">shop now</button>
 		</div>
 	</div>
 </div> 

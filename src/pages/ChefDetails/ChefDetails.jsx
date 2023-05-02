@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import RecipeInfo from "../RecipeInfo/RecipeInfo";
+import { FaThumbsUp } from "react-icons/fa";
 
 const ChefDetails = () => {
-  // const [ChefDetails , setChefDetails]=useState();
-  // const {}=ChefDetails
 
-  // useEffect(() => {
-  //     fetch(`http://localhost:5000/chef/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) =>console.log(data));
-  //   }, []);
 
   const [ChefDetails , recipe] = useLoaderData();
 //   console.log(chef);
@@ -32,11 +26,15 @@ const ChefDetails = () => {
         <figure className="lg:w-6/12">
           <img className="h-80" src={chefPicture} alt="Album" />
         </figure>
-        <div className="card-body">
-          <h2 className="card-title">New album is released!</h2>
-          <p>Click the button to listen on Spotiwhy app.</p>
+        <div className="card-body lg:w-6/12">
+          <h2 className="card-title">Name: {chefName}</h2>
+          <p>{descriptionForFoods}</p>
+          <div className='font-semibold'>
+    <p className='mt-2'>Experience: {yearsOfExperience}</p>
+    <p>Recipes: {numberOfRecipes}</p>
+    </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
+          <FaThumbsUp></FaThumbsUp><span className='text-base text-black font-semibold'>{likes}</span>
           </div>
         </div>
       </div>

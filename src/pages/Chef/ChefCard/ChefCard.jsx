@@ -11,8 +11,7 @@ const ChefCard = ({chef}) => {
            <div className="card w-96 bg-base-100 shadow-xl">
   <figure><img src={chefPicture} alt="" /></figure>
   <div className="card-body">
-    <h2 className="card-title">
-     {chefName}
+    <h2 className="card-title">Name: {chefName}
     </h2>
     <div className='font-semibold'>
     <p className='mt-2'>Experience: {yearsOfExperience}</p>
