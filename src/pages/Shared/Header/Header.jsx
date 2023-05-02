@@ -9,8 +9,8 @@ const Header = () => {
       <div className="relative flex items-center justify-between">
         <Link
           to="/"
-          aria-label="HeroGadget"
-          title="HeroGadget"
+          aria-label="SmittenKitchen"
+          title="SmittenKitchen"
           className="inline-flex items-center"
         >
         
@@ -89,13 +89,13 @@ const Header = () => {
                   <div>
                     <Link
                       to="/"
-                      aria-label="HeroGadget"
-                      title="HeroGadget"
+                      aria-label="SmittenKitchen"
+                      title="SmittenKitchen"
                       className="inline-flex items-center"
                     >
 
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                        HG
+                       SMK
                       </span>
                     </Link>
                   </div>
