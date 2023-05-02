@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import ChefDetails from '../../ChefDetails/ChefDetails';
 
 const ChefCard = ({chef}) => {
-    const {chefPicture , chefName,yearsOfExperience, numberOfRecipes, likes}=chef;
+    const {id ,chefPicture , chefName,yearsOfExperience, numberOfRecipes, likes}=chef;
     
     return (
         <div >
@@ -24,7 +24,7 @@ const ChefCard = ({chef}) => {
         
     </div>
     <div className="card-actions justify-end mt-5">
-    <Link to='chefDatils'><button className="btn">View Recipes</button></Link>
+    <Link to={`/chefDatils/${id}`}><button className="btn bg-slate-500">View Recipes</button></Link>
     </div>
   </div>
 </div> 
