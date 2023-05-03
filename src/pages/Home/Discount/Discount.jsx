@@ -15,7 +15,7 @@ const Discount = () => {
 				<span>Plus free shipping! Use code:</span>
 				<span className="font-bold text-lg">MAMBA</span>
 			</div>
-			<button className="btn bg-slate-600">shop now</button>
+			<button className="btn bg-slate-600">Take Food</button>
 		</div>
 	</div>
 </div> 

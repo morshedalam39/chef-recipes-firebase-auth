@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const RecipeInfo = ({ recipe }) => {
-  console.log(recipe);
+ const [disabled , setDisabled]=useState(false);
 
   const { recipe_name, ingredients, rating, cooking_method } = recipe[0];
 
-  const handelToast = ()=>toast("Wow so easy!");
+  const handelToast = ()=>toast("Favorite Items Added Successfully");
   
 
   return (
@@ -35,13 +35,19 @@ const RecipeInfo = ({ recipe }) => {
                 <span className=""> {rating}</span>
               </div>
               <div className="card-actions justify-end">
-                <button onClick={handelToast} className="btn bg-slate-500">Favorite</button>
+               {
+                disabled && (
+                  <button onClick={()=> handelToast(setDisabled(!disabled))} disabled={disabled} className="btn bg-slate-500">Favorite</button>
+                ) 
+               }
               </div>
             </div>
           </div>
         </div>
       ))}
+       <ToastContainer />
     </div>
+
   );
 };
 

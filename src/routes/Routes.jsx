@@ -7,6 +7,7 @@ import Blog from "../pages/Blog/Blog";
 import Chef from "../pages/Chef/Chef";
 import ChefDetails from "../pages/ChefDetails/ChefDetails";
 import RecipeInfo from "../pages/RecipeInfo/RecipeInfo";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -32,18 +33,18 @@ const router = createBrowserRouter([
             {
                 path: '/chef',
                 element: <Chef></Chef>,
-                // loader: () => fetch(`http://localhost:5000/chef`)
+                // loader: () => fetch(`https://chef-recipe-morshedalam39.vercel.app/chef`)
             },
             {
                 path: '/chefDatils/:id',
-                element: <ChefDetails></ChefDetails>,
+                element: <PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
                 loader: async ({params}) => {
                     let chef; 
                     let recipe;
-                    await fetch(`http://localhost:5000/chef/${params.id}`)
+                    await fetch(`https://chef-recipe-morshedalam39.vercel.app/chef/${params.id}`)
                     .then(res =>res.json())
                     .then(result=>chef=result)
-                    await fetch(`http://localhost:5000/details/${params.id}`)
+                    await fetch(`https://chef-recipe-morshedalam39.vercel.app/details/${params.id}`)
                     .then(res =>res.json())
                     .then(result=>recipe=result)
                     return [chef,recipe]
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
 //             {
 //                 path: '/recipeInfo/:id',
 //                 element:<RecipeInfo></RecipeInfo>,
-//  loader: ({params}) =>fetch(`http://localhost:5000/details/2`)
+//  loader: ({params}) =>fetch(`https://chef-recipe-morshedalam39.vercel.app/details/2`)
 //             }
         ]
     }

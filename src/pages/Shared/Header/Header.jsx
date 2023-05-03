@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-
+import { AuthContext } from "../../../providers/AuthProviders";
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="sticky top-0 z-20 px-4 py-5 mx-auto  md:px-24 lg:px-8 bg-slate-400">
       <div className="relative flex items-center justify-between">
@@ -13,9 +21,8 @@ const Header = () => {
           title="SmittenKitchen"
           className="inline-flex items-center"
         >
-        
           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 ">
-          Smitten Kitchen
+            Smitten Kitchen
           </span>
         </Link>
         <ul className="items-center hidden space-x-8 lg:flex">
@@ -40,14 +47,25 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/login"
-              aria-label="Login"
-              title="Login"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Login
-            </NavLink>
+            {user ? (
+              <NavLink onClick={handleLogOut}
+                to=""
+                aria-label="Login"
+                title="Login"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Login Out
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                aria-label="Login"
+                title="Login"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Login
+              </NavLink>
+            )}
           </li>
           <li>
             <NavLink
@@ -93,9 +111,8 @@ const Header = () => {
                       title="SmittenKitchen"
                       className="inline-flex items-center"
                     >
-
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                       SMK
+                        SMK
                       </span>
                     </Link>
                   </div>
@@ -127,7 +144,7 @@ const Header = () => {
                         Blog
                       </Link>
                     </li>
-                    
+
                     <li>
                       <Link
                         to="/login"
