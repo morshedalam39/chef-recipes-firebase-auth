@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 
 const Register = () => {
-  const { createUser , signInWithGoogle , signInWithGithub} = useContext(AuthContext);
+  const { createUser , signInWithGoogle , signInWithGithub , GetProfile ,setUser} = useContext(AuthContext);
   const [error, setError] = useState();
 
   const handleRegister = (event) => {
@@ -34,6 +34,10 @@ const Register = () => {
 		setError('');
 		form.reset();
         console.log(createdUser);
+		
+		GetProfile(result.user , name , photo )
+		.then((result)=>{setUser(result.user)})
+		.catch((error)=>{console.log(error);})
       })
       .catch((error) => {
         console.log(error);

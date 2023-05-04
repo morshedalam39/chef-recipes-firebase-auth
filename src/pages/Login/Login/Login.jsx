@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 
 const Login = () => {
 	const navigate =useNavigate();
 	const location =useLocation();
+	const [error , setError]=useState("")
+
 
 	const from = location.state?.from?.pathname || '/';
 
@@ -22,10 +24,11 @@ const Login = () => {
 			const loggedUser = result.user;
 			console.log(loggedUser);
 			form.reset();
+			setError("")
 			navigate(from, { replace: true })
 		})
 		.catch(error => {
-			console.log(error)
+			setError(error.message)
 		})
 	}
 
@@ -34,6 +37,7 @@ const Login = () => {
 		.then(result => {
 			const loggedUser = result.user;
 			console.log(loggedUser);
+      navigate(from, { replace: true })
 		})
 		.catch(error => {
 			console.log(error)
@@ -44,6 +48,7 @@ const Login = () => {
 		.then(result => {
 			const loggedUser = result.user;
 			console.log(loggedUser);
+      navigate(from, { replace: true })
 		})
 		.catch(error => {
 			console.log(error)
@@ -83,6 +88,7 @@ const Login = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
+		  <p className="text-red-500">{error}</p>
 
           <button className="block w-full rounded-lg p-3 text-center  bg-slate-500">
             Sign in
@@ -116,6 +122,7 @@ const Login = () => {
             </svg>
           </button>
         </div>
+		
         <p className="text-xs text-center sm:px-6 dark:text-gray-400">
           Don't have an account?
           <Link to="/register" className="underline dark:text-gray-100">

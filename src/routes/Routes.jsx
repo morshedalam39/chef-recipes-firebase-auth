@@ -8,11 +8,14 @@ import Chef from "../pages/Chef/Chef";
 import ChefDetails from "../pages/ChefDetails/ChefDetails";
 import RecipeInfo from "../pages/RecipeInfo/RecipeInfo";
 import PrivateRoute from "./PrivateRoute";
+import Error from "../ErrorPage/Error";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement:<Error></Error>,
+        
         children: [
             {
                 path: '/',
@@ -33,7 +36,7 @@ const router = createBrowserRouter([
             {
                 path: '/chef',
                 element: <Chef></Chef>,
-                // loader: () => fetch(`https://chef-recipe-morshedalam39.vercel.app/chef`)
+
             },
             {
                 path: '/chefDatils/:id',
@@ -51,13 +54,13 @@ const router = createBrowserRouter([
                     
                 }
             },
-//             {
-//                 path: '/recipeInfo/:id',
-//                 element:<RecipeInfo></RecipeInfo>,
-//  loader: ({params}) =>fetch(`https://chef-recipe-morshedalam39.vercel.app/details/2`)
-//             }
-        ]
-    }
-])
+            
+        ],
+       
+
+    },
+]
+
+)
 
 export default router;

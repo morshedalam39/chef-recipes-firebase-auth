@@ -1,4 +1,6 @@
 import React from "react";
+import banner from "../../../../assets/banner.jpg"
+
 
 
 const Banner = () => {
@@ -7,7 +9,7 @@ const Banner = () => {
       <div
         className="hero min-h-screen"
         style={{
-          backgroundImage: `url("/src/assets/banner.jpg")`,
+          backgroundImage: `url("${banner}")`,
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>

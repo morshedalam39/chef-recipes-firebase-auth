@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { FaUserCircle } from "react-icons/fa";
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +13,8 @@ const Header = () => {
       .then()
       .catch((error) => console.log(error));
   };
+  console.log(user);
+
 
   return (
     <div className="sticky top-0 z-20 px-4 py-5 mx-auto  md:px-24 lg:px-8 bg-slate-400">
@@ -46,7 +50,19 @@ const Header = () => {
               Blog
             </NavLink>
           </li>
+          {
+            user&& <img id="img" alt="" className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700" src={user.photoURL} />
+          }
+          {
+            user&&  <ReactTooltip
+            anchorId="img"
+            place="bottom"
+            variant="info"
+            content={user.displayName}
+          />
+          }
           <li>
+           
             {user ? (
               <NavLink onClick={handleLogOut}
                 to=""
@@ -67,16 +83,7 @@ const Header = () => {
               </NavLink>
             )}
           </li>
-          <li>
-            <NavLink
-              to="/register"
-              aria-label="Register"
-              title="Register"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Register
-            </NavLink>
-          </li>
+
         </ul>
         <div className="lg:hidden">
           <button
