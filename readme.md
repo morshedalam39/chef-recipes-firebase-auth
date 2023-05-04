@@ -1,7 +1,7 @@
-
+# live_link https://chef-recipe-2aea7.web.app/
 
  #Explain _Website
- -  First part is navbar.This is a common element for all the page its show Our website name & also three button Home button if click home button show Home page next button is Blog if click show some Question blog and also pdf download button if click downloaded blog page content.
+ -  First part is navbar.This is a common element for all the page its show Our website name & also three button Home button if click home button show Home page next button is Blog if click show some Question blog and also pdf download button if click downloaded blog page content pdf.
 
 
 - Second part is banner part.It is only view a home page.when entire another page this time this banner is hidden.

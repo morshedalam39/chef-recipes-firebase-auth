@@ -22,15 +22,19 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    if (password.length < 6) {
+    if (name == 0) {
+      setError("Provide Your name");
+      return;
+    } else if (photo == 0) {
+      setError("Provide Your Picture ");
+      return;
+    } else if (email == 0) {
+      setError("Provide Your Email");
+      return;
+    } else if (password.length < 6) {
       setError("Please add at least 6 characters in your password");
       return;
     }
-    //  else if (email == 0) {
-    //   setError("Provide Your Email");
-    // }
-
-    console.log(name, photo, email, password);
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
