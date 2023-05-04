@@ -29,7 +29,7 @@ const Blog = () => {
                     managing its own state and passing the new values as props
                     to the controlled component. You could also call this a
                     "dumb component".
-                  </p>{" "}
+                  </p>
                   <br />
                   <p>
                     <span className="font-bold">Uncontrolled: </span> A

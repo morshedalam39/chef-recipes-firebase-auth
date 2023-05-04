@@ -2,7 +2,7 @@ import React from "react";
 import { FaThumbsUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ChefDetails from "../../ChefDetails/ChefDetails";
-import LazyLoad from "react-lazy-load";
+import LazyLoad from 'react-lazyload';
 
 const ChefCard = ({ chef }) => {
   const {
@@ -16,9 +16,9 @@ const ChefCard = ({ chef }) => {
 
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-[100%] bg-base-100 shadow-xl">
         <figure>
-          <LazyLoad height={230}>
+          <LazyLoad height={255}>
             <img src={chefPicture} alt="" />
           </LazyLoad>
         </figure>

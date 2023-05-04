@@ -10,7 +10,7 @@ const Main = () => {
   const { loading } = useContext(AuthContext);
 
   return (
-    <div>
+    <>
       {loading ? (
         <div className="flex justify-center">
           <RotatingLines
@@ -28,7 +28,7 @@ const Main = () => {
           <Footer></Footer>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

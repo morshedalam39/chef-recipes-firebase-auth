@@ -25,9 +25,10 @@ const Register = () => {
     if (password.length < 6) {
       setError("Please add at least 6 characters in your password");
       return;
-    } else if (email == 0) {
-      setError("Provide Your Email");
     }
+    //  else if (email == 0) {
+    //   setError("Provide Your Email");
+    // }
 
     console.log(name, photo, email, password);
     createUser(email, password)
@@ -91,6 +92,7 @@ const Register = () => {
               id="Name"
               placeholder="Name"
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              required
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -103,6 +105,7 @@ const Register = () => {
               id="Photo"
               placeholder="Photo Url"
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              required
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -115,6 +118,7 @@ const Register = () => {
               id="Email"
               placeholder="Email"
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              required
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -127,6 +131,7 @@ const Register = () => {
               id="password"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              required
             />
           </div>
           <p className="text-red-800">{error}</p>

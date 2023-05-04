@@ -25,7 +25,7 @@ const ChefDetails = () => {
     <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full  md:px-24 lg:px-8 bg-slate-200">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure className="lg:w-6/12">
-          <img className="h-80" src={chefPicture} alt="Album" />
+          <img className="h-80 w-full" src={chefPicture} alt="Album" />
         </figure>
 
         <div className="card-body lg:w-6/12">

@@ -74,7 +74,7 @@ const Header = () => {
                 title="Login"
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
-                Login Out
+                Log Out
               </NavLink>
             ) : (
               <NavLink
