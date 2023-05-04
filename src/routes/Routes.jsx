@@ -11,56 +11,57 @@ import PrivateRoute from "./PrivateRoute";
 import Error from "../ErrorPage/Error";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Main></Main>,
-        errorElement:<Error></Error>,
-        
-        children: [
-            {
-                path: '/',
-                element: <Home></Home>
-            },
-            {
-                path: '/login',
-                element: <Login></Login>
-            },
-            {
-                path: '/register',
-                element: <Register></Register>
-            },
-            {
-                path: '/blog',
-                element: <Blog></Blog>
-            },
-            {
-                path: '/chef',
-                element: <Chef></Chef>,
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <Error></Error>,
 
-            },
-            {
-                path: '/chefDatils/:id',
-                element: <PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
-                loader: async ({params}) => {
-                    let chef; 
-                    let recipe;
-                    await fetch(`https://chef-recipe-morshedalam39.vercel.app/chef/${params.id}`)
-                    .then(res =>res.json())
-                    .then(result=>chef=result)
-                    await fetch(`https://chef-recipe-morshedalam39.vercel.app/details/${params.id}`)
-                    .then(res =>res.json())
-                    .then(result=>recipe=result)
-                    return [chef,recipe]
-                    
-                }
-            },
-            
-        ],
-       
-
-    },
-]
-
-)
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+      {
+        path: "/chef",
+        element: <Chef></Chef>,
+      },
+      {
+        path: "/chefDatils/:id",
+        element: (
+          <PrivateRoute>
+            <ChefDetails></ChefDetails>
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => {
+          let chef;
+          let recipe;
+          await fetch(
+            `https://chef-recipe-morshedalam39.vercel.app/chef/${params.id}`
+          )
+            .then((res) => res.json())
+            .then((result) => (chef = result));
+          await fetch(
+            `https://chef-recipe-morshedalam39.vercel.app/details/${params.id}`
+          )
+            .then((res) => res.json())
+            .then((result) => (recipe = result));
+          return [chef, recipe];
+        },
+      },
+    ],
+  },
+]);
 
 export default router;

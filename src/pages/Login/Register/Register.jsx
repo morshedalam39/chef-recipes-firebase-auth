@@ -3,12 +3,18 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 
 const Register = () => {
-  const { createUser , signInWithGoogle , signInWithGithub , GetProfile ,setUser} = useContext(AuthContext);
+  const {
+    createUser,
+    signInWithGoogle,
+    signInWithGithub,
+    GetProfile,
+    setUser,
+  } = useContext(AuthContext);
   const [error, setError] = useState();
 
   const handleRegister = (event) => {
     event.preventDefault();
-	setError('');
+    setError("");
 
     const form = event.target;
     const name = form.name.value;
@@ -16,28 +22,28 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-
     if (password.length < 6) {
       setError("Please add at least 6 characters in your password");
       return;
+    } else if (email == 0) {
+      setError("Provide Your Email");
     }
-
-	else if(email == 0){
-		setError("Provide Your Email")
-
-	}
 
     console.log(name, photo, email, password);
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
-		setError('');
-		form.reset();
+        setError("");
+        form.reset();
         console.log(createdUser);
-		
-		GetProfile(result.user , name , photo )
-		.then((result)=>{setUser(result.user)})
-		.catch((error)=>{console.log(error);})
+
+        GetProfile(result.user, name, photo)
+          .then((result) => {
+            setUser(result.user);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -45,25 +51,25 @@ const Register = () => {
   };
 
   const handleGoogleSignIn = () => {
-	signInWithGoogle()
-	.then(result => {
-		const loggedUser = result.user;
-		console.log(loggedUser);
-	})
-	.catch(error => {
-		console.log(error)
-	})
-}
+    signInWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const handleGithubSignIn = () => {
-	signInWithGithub()
-	.then(result => {
-		const loggedUser = result.user;
-		console.log(loggedUser);
-	})
-	.catch(error => {
-		console.log(error)
-	})
-}
+    signInWithGithub()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -123,10 +129,10 @@ const Register = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
-		  <p className="text-red-800">{error}</p>
+          <p className="text-red-800">{error}</p>
 
           <button className="block w-full rounded-lg p-3 text-center  bg-slate-500">
-		  Register
+            Register
           </button>
         </form>
         <div className="flex items-center pt-4 space-x-1">
@@ -137,8 +143,11 @@ const Register = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button onClick={handleGoogleSignIn}
-		  aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogleSignIn}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -148,8 +157,11 @@ const Register = () => {
             </svg>
           </button>
 
-          <button onClick={handleGithubSignIn}
-		  aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button
+            onClick={handleGithubSignIn}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -162,7 +174,7 @@ const Register = () => {
         <p className="text-xs text-center sm:px-6 dark:text-gray-400">
           Allready have an account?
           <Link to="/login" className="underline dark:text-gray-100">
-           Login
+            Login
           </Link>
         </p>
       </div>

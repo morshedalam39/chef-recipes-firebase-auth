@@ -3,63 +3,64 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 
 const Login = () => {
-	const navigate =useNavigate();
-	const location =useLocation();
-	const [error , setError]=useState("")
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [error, setError] = useState("");
 
+  const from = location.state?.from?.pathname || "/";
 
-	const from = location.state?.from?.pathname || '/';
+  const { signIn, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
+  const handleLogin = (event) => {
+    event.preventDefault();
 
-	const { signIn, signInWithGoogle , signInWithGithub}=useContext(AuthContext);
-	const handleLogin = event => {
-        event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
 
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
+        setError("");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
 
-		signIn(email, password)
-		.then(result => {
-			const loggedUser = result.user;
-			console.log(loggedUser);
-			form.reset();
-			setError("")
-			navigate(from, { replace: true })
-		})
-		.catch(error => {
-			setError(error.message)
-		})
-	}
-
-	const handleGoogleSignIn = () => {
-		signInWithGoogle()
-		.then(result => {
-			const loggedUser = result.user;
-			console.log(loggedUser);
-      navigate(from, { replace: true })
-		})
-		.catch(error => {
-			console.log(error)
-		})
-	}
-	  const handleGithubSignIn = () => {
-		signInWithGithub()
-		.then(result => {
-			const loggedUser = result.user;
-			console.log(loggedUser);
-      navigate(from, { replace: true })
-		})
-		.catch(error => {
-			console.log(error)
-		})
-	}
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleGithubSignIn = () => {
+    signInWithGithub()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-slate-300 mt-5 mx-auto mb-5">
         <h1 className="text-2xl font-bold text-center">Please Login</h1>
-        <form onSubmit={handleLogin}
+        <form
+          onSubmit={handleLogin}
           novalidate=""
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -88,7 +89,7 @@ const Login = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
-		  <p className="text-red-500">{error}</p>
+          <p className="text-red-500">{error}</p>
 
           <button className="block w-full rounded-lg p-3 text-center  bg-slate-500">
             Sign in
@@ -102,7 +103,11 @@ const Login = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button onClick={handleGoogleSignIn} aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogleSignIn}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -112,7 +117,11 @@ const Login = () => {
             </svg>
           </button>
 
-          <button onClick={handleGithubSignIn} aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button
+            onClick={handleGithubSignIn}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -122,7 +131,7 @@ const Login = () => {
             </svg>
           </button>
         </div>
-		
+
         <p className="text-xs text-center sm:px-6 dark:text-gray-400">
           Don't have an account?
           <Link to="/register" className="underline dark:text-gray-100">

@@ -8,9 +8,6 @@ import { RotatingLines } from "react-loader-spinner";
 
 const Main = () => {
   const { loading } = useContext(AuthContext);
-  // if (loading) {
-  //     return ;
-  // }
 
   return (
     <div>
