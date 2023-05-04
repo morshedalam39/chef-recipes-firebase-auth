@@ -43,9 +43,9 @@ In addition, you may also benefit from using it to improve the backend functiona
 				</div>
 			</details>
 			<details>
-				<summary className="py-2 outline-none cursor-pointer focus:underline font-bold text-xl">2.What is a custom hook, and why will you create a custom hook??</summary>
+				<summary className="py-2 outline-none cursor-pointer focus:underline font-bold text-xl">2.What is a custom hook, and why will you create a custom hook?</summary>
 				<div className="px-4 pb-4 space-y-2">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates aspernatur dolores in consequatur doloremque inventore reprehenderit, consequuntur perspiciatis architecto.</p>
+					<p>Custom React JS hooks offer reusability as when a custom hook is created, it can be reused easily, which makes the code cleaner and reduces the time to write the code. It also enhances the rendering speed of the code as a custom hook does not need to be rendered again and again while rendering the whole code.</p>
 				</div>
 			</details>
 		</div>
