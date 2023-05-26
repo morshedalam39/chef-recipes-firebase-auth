@@ -10,6 +10,7 @@ const Main = () => {
   const { loading } = useContext(AuthContext);
 
   return (
+    // if loading
     <>
       {loading ? (
         <div className="flex justify-center">
